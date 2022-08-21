@@ -2,8 +2,6 @@
 - Projet de debugging de la partie Front-end d'une API.
 
 ## Comment lancer le projet:
-
-### Cloner le projet:
 ```
 git clone https://github.com/FZChlo/Billed-App
 ```
