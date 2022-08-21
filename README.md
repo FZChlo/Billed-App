@@ -6,4 +6,4 @@
 git clone https://github.com/FZChlo/Billed-App
 ```
 
-## Suivre les indications des README de chaques dossiers (Front-End & Back-End)
+Puis suivre les indications des README de chaques dossiers (Front-End & Back-End)
