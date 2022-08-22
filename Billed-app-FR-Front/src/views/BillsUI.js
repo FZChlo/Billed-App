@@ -20,7 +20,7 @@ const row = (bill) => {
     `)
   }
 
-  const rows = (data) => {  //resolution du bug report Bills(il manquait le trie des date avant de mettre en tableau)
+  const rows = (data) => {  // 1.resolution du bug report Bills(il manquait le trie des date avant de mettre en tableau)
     return (data && data.length) ? data.sort((a,b) => {return ((a.date < b.date) ? 1 : -1 )}) .map(bill => row(bill)).join("") : ""
   }
 

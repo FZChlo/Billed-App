@@ -144,9 +144,9 @@ export default class {
         .html("")
       this.counter ++
     }
-
+// 4. Resolution du bug dashboard ligne 149 ( suppression de l'historique des clics)
     bills.forEach(bill => {
-      $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
+      $(`#open-bill${bill.id}`).off("click").on("click",((e) => this.handleEditTicket(e, bill, bills)))
     })
 
     return bills
