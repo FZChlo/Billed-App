@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { ROUTES, ROUTES_PATH } from "../constants/routes"
+import { ROUTES, ROUTES_PATH } from "../constants/routes.js"
 import { screen } from "@testing-library/dom"
 
 const data = []

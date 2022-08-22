@@ -55,7 +55,8 @@ export default () => {
                   </div>
                   <div class="col-half">
                     <label for="file" class="bold-label">Justificatif</label>
-                    <input required type="file" class="form-control blue-border" data-testid="file" />
+                    <input required type="file" accept="image/png", "image/jpeg", "image/jpg" class="form-control blue-border" data-testid="file" />
+                    <p class= "message" hidden id = "message">Merci de bien vouloir utiliser les formats JPEG, JPG ou PNG.  svp</p>
                   </div>
                 </div>
             </div>
@@ -69,6 +70,11 @@ export default () => {
           </form>
         </div>
       </div>
+
+    
     </div>
   `)
 }
+
+// 3. Modif ligne 58/59, ajout de accept="image/png etc, ce qui permet de ne pas proposer d'autres extensions
+//ajout d'une balise "p" pour mettre le message d'erreur de format. En propriété hidden
