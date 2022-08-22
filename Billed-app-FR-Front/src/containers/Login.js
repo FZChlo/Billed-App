@@ -37,12 +37,14 @@ export default class Login {
 
   }
 
+
+  // 2. Résolution du bug login, en remplacant le " employee-email-input" par "admin-email-input" lignes 46/47.
   handleSubmitAdmin = e => {
     e.preventDefault()
     const user = {
-      type: "Admin",
-      email: e.target.querySelector(`input[data-testid="employee-email-input"]`).value,
-      password: e.target.querySelector(`input[data-testid="employee-password-input"]`).value,
+      type: "Admin", 
+      email: e.target.querySelector(`input[data-testid="admin-email-input"]`).value,
+      password: e.target.querySelector(`input[data-testid="admin-password-input"]`).value,
       status: "connected"
     }
     this.localStorage.setItem("user", JSON.stringify(user))
