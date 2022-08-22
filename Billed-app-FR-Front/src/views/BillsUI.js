@@ -1,6 +1,7 @@
 import VerticalLayout from './VerticalLayout.js'
 import ErrorPage from "./ErrorPage.js"
 import LoadingPage from "./LoadingPage.js"
+import { formatDate } from '../app/format' // 1. Import de formatDate
 
 import Actions from './Actions.js'
 
@@ -19,9 +20,23 @@ const row = (bill) => {
     `)
   }
 
-const rows = (data) => {
-  return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
-}
+  const rows = (data) => {
+ 
+    return (data && data.length) ? data
+      .sort((a, b) => { // 1. Ajout de la fonction de trie
+          let da = new Date(a.date),
+              db = new Date(b.date);
+          return db - da
+      })
+      .map(doc => {
+        return {  
+          ...doc,
+          date: formatDate(doc.date), // 1. Avec l'appel de formatDate
+        }
+      }) 
+      .map(bill => row(bill))
+      .join("") : ""
+  }
 
 export default ({ data: bills, loading, error }) => {
   

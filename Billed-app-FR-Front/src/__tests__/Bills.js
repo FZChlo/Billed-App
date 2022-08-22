@@ -29,11 +29,11 @@ describe("Given I am connected as an employee", () => {
 
     })
     test("Then bills should be ordered from earliest to latest", () => {
-      document.body.innerHTML = BillsUI({ data: bills })
-      const dates = screen.getAllByText(/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/i).map(a => a.innerHTML)
-      const antiChrono = (a, b) => ((a < b) ? 1 : -1)
-      const datesSorted = [...dates].sort(antiChrono)
-      expect(dates).toEqual(datesSorted)
-    })
+      document.body.innerHTML = BillsUI({ data: bills }) // Affiche les données du fichier views/billsUI
+      const dates = screen.getAllByText(/^([1-9]|[12][0-9]|3[01])[ ]\b.{3}\b[.][ ]\d{2}$/i).map(a => a.innerHTML)
+      const antiChrono = (a, b) => ((a < b) ? 1 : -1) // Par ordre croissant
+      const datesSorted = [...dates].sort(antiChrono) // Les dates sont triés par dates
+      expect(dates).toEqual(datesSorted) // 1. On s'attend à ce que les données "dates" soit égal aux données "datesSorted"
+    }) // Resolution du bug 1 sur le fichier views/billsUI ( fichier d'affichage des bills) ou il manquait la fonction de trie.
   })
 })
