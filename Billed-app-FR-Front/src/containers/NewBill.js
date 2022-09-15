@@ -15,24 +15,25 @@ export default class NewBill {
     this.billId = null
     new Logout({ document, localStorage, onNavigate })
   }
+  
+  getFileFormat(fileName) {
+    const splitedName = fileName.split('.')
+    return splitedName[splitedName.length - 1]
+  };
+
   handleChangeFile = e => {
+    // BUG REPORT - Gestion de extensions de fichier
     e.preventDefault()
-
+// FORMAT AUTORISE
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
-    //format autorisé
-    const formatAutorise = [ "image/jpg", "image/png","image/jpeg", ]
-    var controlFormat = formatAutorise.includes(file.type)
+        const fileName = file ? file.name : '';
+        const fileExt = this.getFileFormat(fileName).toLowerCase()
 
-    if(controlFormat){ //si le format est bon, on continue
-
-
-    const filePath = e.target.value.split(/\\/g)
-    console.log(filePath);
-    const fileName = filePath[filePath.length-1]
-    const formData = new FormData()
-    const email = JSON.parse(localStorage.getItem("user")).email
-    formData.append('file', file)
-    formData.append('email', email)
+        if (fileExt == "jpg" || fileExt == "png" || fileExt == "jpeg") {
+            const formData = new FormData()
+            const email = JSON.parse(localStorage.getItem("user")).email
+            formData.append("file", file)
+            formData.append('email', email)
 
     this.store
       .bills()
@@ -49,8 +50,10 @@ export default class NewBill {
       }).catch(error => console.error(error))
       
   }else{  //si le format n'est pas bon, on affiche un message(saisi dans dossier views, fichier NexBillUi)
-    document.getElementById("message").hidden = false //le message est hidden au départ, on lui demande de ne plus l'être
-    e.target.value = "" //le nom de l'image avec mauvaise extension ne doit pas apparaitre
+    if (this.document.querySelector(`input[data-testid="file"]`)) {
+                this.document.querySelector(`input[data-testid="file"]`).value = ''
+                alert("Le format du fichier n'est pas valide (jpg, png ou jpeg uniquement)")
+            }
 }
 }
   handleSubmit = e => {
