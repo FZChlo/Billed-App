@@ -109,7 +109,7 @@ describe("When I click on first eye icon", () => {
     });
 });
 });
-// 2-2 ->------- TESTS D'INTEGRATION AVEC "GET" -------
+// 5.2-2 ->------- TESTS D'INTEGRATION AVEC "GET" -------
 describe('Given I am connected as an employee', () => {
   describe('When I am on Bills Page', () => {
       // Récupération des données de l'API
