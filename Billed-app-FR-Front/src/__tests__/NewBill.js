@@ -14,7 +14,7 @@ import router from "../app/Router.js";
 
 jest.mock("../app/store", () => mockStore);
 
-    // 3-1 -> ------- TESTS UNITAIRES -------
+    // 5.3-1 -> ------- TESTS UNITAIRES -------
     describe("Given I am connected as an employee", () => {
       describe("When I am on NewBill Page", () => {
           beforeEach(() => {
@@ -85,7 +85,7 @@ jest.mock("../app/store", () => mockStore);
   });
 
 
-//3-2 -> --------Test d'intégration POST --------
+//5.3-2 -> --------Test d'intégration POST --------
 describe("Given I am a user connected as Employee", () => {
   describe("When I submit the form completed", () => {
       test("Then the bill is created", async() => {
